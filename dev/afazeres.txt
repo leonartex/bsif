@@ -1,0 +1,16 @@
+Barra superior aparecendo ao scrollar para cima
+Barra superior responsiva
+    Limitar a expansão da barra até uma determinada resolução bacana
+Apresentação e Rodapé tendo o tamanho mínimo da tela em resoluções pequenas (celulares)
+Fazer rodapé
+    Ver o conteúdo que se coloca
+Página de projetos ???
+Página de notícia específica
+    Customizar os comentários
+Página de projeto específico
+Página de definição do curso
+Ajeitar para :active, :focus e por aí vai
+Deixar em H3 os coiso do detalhamento do curso (isso vai estar certo?) (Deixar em lista?)
+Área de interesse como lista?
+
+Aplicar boa semantica no HTML
