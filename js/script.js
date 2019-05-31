@@ -10,19 +10,26 @@ window.onload = function(){
         lateral.classList.toggle('ativo');
     });
 
+    var logoDiv = document.getElementById('logo-div');
     var pesquisa = document.getElementById('pesquisa');
     var pesquisar = document.getElementById('pesquisar');
     var campoPesquisa = document.getElementById('campoPesquisa');
     pesquisa.addEventListener('focusin', function(){
+        if(document.documentElement.clientWidth < 500){
+            logoDiv.classList.add('ativo');
+        }
         pesquisar.classList.add('ativo');
         pesquisar.tabIndex = -1;
         campoPesquisa.classList.add('ativo');
+        campoPesquisa.tabIndex = 0;
         campoPesquisa.focus();
     });
     campoPesquisa.addEventListener('blur', function(){
+        logoDiv.classList.remove('ativo');
         pesquisar.classList.remove('ativo');
         pesquisar.tabIndex = 0;
         campoPesquisa.classList.remove('ativo');
+        campoPesquisa.tabIndex = -1;
     });
 
 

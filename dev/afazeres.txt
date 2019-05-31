@@ -1,8 +1,5 @@
 Barra superior
-    Limitar a expansão da barra até uma determinada resolução bacana
-    Botão de pesquisa ser um label ??
     Resolver problema de focar no botão (focar diretamente para o input apenas quando estiver fora do form)
-    Resolver responsividade do coiso de pesquisa
 Apresentação e Rodapé tendo o tamanho mínimo da tela em resoluções pequenas (celulares)
 Fazer rodapé
     Ver o conteúdo que se coloca
@@ -12,16 +9,19 @@ Página de notícia específica
 Página de projeto específico
 Página para o corpo docente???
 Ajeitar para :active, :focus e por aí vai
-Deixar em H3 os coiso do detalhamento do curso (isso vai estar certo?) (Deixar em lista?)
 Página de corpo docente ???
-Fazer botão com animação bonitinha
-Responsividade da listagem de notícias e da barra de pesquisa da página de busca
-Texto do botão pesquisar sumir
-Botões mais bonitos
+Responsividade da listagem de notícias
+Paginação responsiva
 Cada tipo de projeto ter uma cor representando ele (afeta .apresentação e o card na área de projetos e página inicial) //Só faz sentido se o resto do site utilizar cores também
 Ver outras informações pertinentes sobre os proejtos
 Encontrar formas mais pertinentes para apresentar os autores dos projetos
 Página de TCCCCCCCCC
     Navegação dos TCCs publicados e o TCC em si
+
+Comentário
+    Comentário
+        Resposta
+    Formulário de comentário
+
 
 Aplicar boa semantica no HTML

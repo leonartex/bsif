@@ -62,19 +62,29 @@ header>nav a:hover{
 header>nav>div{
     display: flex;
     padding-left: 5px;
+    left: 0;
+    transition: left 0.7s;
+    background: #fff;
+}
+header>nav>div.ativo{
+    position: fixed;
+    left: -200px;
+    transition: left 0.7s;
 }
 header>nav>div>button{
     display: none;
-
     align-self: center;
     font-size: 24px;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    background: #eeeded;
-    border: 1px solid rgba(0, 0, 0, 0.19);
-    border-radius: 5%;
+    padding: 5px 10px;
+    background: #eeeeee;
+    border: 2px solid #2A2A2A;
+    border-radius: 2px;
     margin-right: 5px;
+    transition: background 0.2s ease-in;
+}
+header>nav>div>button:hover{
+    color: #fff;
+    background: #2a2a2a;
 }
 header>nav>div img{
     height: 28px;
@@ -82,10 +92,16 @@ header>nav>div img{
 header>nav>div>a{
     font-size: 28px;
 }
-header>nav>ul{
+
+header>nav>div::after{
+    content: " ";
+    margin: 10px 10px;
+    border-left: 1px solid rgba(0, 0, 0, 0.19); 
+}
+header nav ul{
+    flex-grow: 1;
     padding-inline-start: 0;
-    padding-right: 5px;
-    margin: 0;
+    margin: 0 5px;
 }
 header>nav>ul>li{
     list-style: none;
@@ -98,41 +114,60 @@ header>nav>ul>li[aria-current=page]>a{
     border-bottom: 3px solid #2A2A2A;
 }
 
-.pesquisa form{
+.pesquisa{
     display: flex;
+    margin: 5px;
 }
-.pesquisa form button{
-    align-self: center;
-    font-size: 16px;
+.pesquisa button{
+    word-wrap: none;
+    text-decoration: none;
+    background: none;
+    border: 2px solid #2a2a2a;
+    border-radius: 2px;
+    color: #000;
     font-weight: bold;
-    padding: 5px;
-    background: #eeeded;
-    border: 1px solid rgba(0, 0, 0, 0.19);
+    font-size: 1rem;
+    padding: 0;
     margin-right: 5px;
 }
-.pesquisa form button.ativo{
+.pesquisa button span{
+    padding: 12px 4px;
+    transition: background 0.2s ease-in-out;
+}
+.pesquisa button:hover span{
+    background: #2A2A2A;
+    color: #fff;
+}
+.pesquisa button i{
+    background: #2A2A2A;
+    color: #fff;
+    padding: 12px;
+}
+.pesquisa button.ativo{
     border-right: 1px solid rgba(0, 0, 0, 0.19);
 }
-.pesquisa form button .compacta{
-    position: relative;
-    width: 100%;
-    transition: width 0.3s;
+.pesquisa button.ativo span{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
-.pesquisa form button.ativo .compacta{
-    width: 0%;
-}
-.pesquisa form input{
+.pesquisa input{
     width: 0px;
     border: 0;
     font-size: 16px;
     padding-left: 10px;
     transition: width 0.7s;
 }
-.pesquisa form input.ativo{
-    display: inline-block;
-    width: 150px;
+.pesquisa input.ativo{
     border: 2px solid #2A2A2A;
+    flex-grow: 1;
 }
+
 @media(max-width: 577.98px){
     header>nav>div>button{
         display: block;
@@ -149,7 +184,7 @@ header>nav>ul>li[aria-current=page]>a{
     header>nav>ul>li:first-of-type{
         display: none;
     }
-    .compacta{
+    .pesquisa button span{
         position: absolute;
         width: 1px;
         height: 1px;
@@ -161,6 +196,17 @@ header>nav>ul>li[aria-current=page]>a{
     }
 }
 
+@media (min-width: 576px) {
+    .pesquisa input.ativo{
+        width: 100px;
+    }
+}
+@media (min-width: 768px) {
+    .pesquisa input.ativo{
+        width: 200px;
+    }
+}
+
 /* Barra Lateral*/
 #lateral{
     display: none;
@@ -168,7 +214,7 @@ header>nav>ul>li[aria-current=page]>a{
 
 @media(max-width: 577.98px){
     #lateral{
-        display: block;
+        display: none;
         position: fixed;
         left: -200px;
         top: 53px;
@@ -272,6 +318,7 @@ h1>span:last-of-type{
 nav[aria-label="breadcrumb"]>ol{
     padding: 0;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 nav[aria-label="breadcrumb"]>ol>li{
@@ -621,8 +668,7 @@ h3{
 
 /* Notícias */
 .lista-noticias{
-    display: grid;
-    grid-template-columns: 1fr;
+    margin: auto;
 }
 
 .lista-noticias .listagem{
@@ -696,10 +742,6 @@ h3{
 }
 
 @media (min-width: 576px) {
-    .lista-noticias{
-        display: grid;
-        grid-template-columns: 1fr;
-    }
     .lista-noticias>div:first-of-type{
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -728,8 +770,7 @@ h3{
 
 @media (min-width: 768px) {
     .lista-noticias{
-        display: grid;
-        grid-template-columns: 1fr;
+        width: 85%;
     }
     .lista-noticias>div:first-of-type{
         display: grid;
@@ -762,11 +803,9 @@ h3{
 
 @media (min-width: 992px) {
     .lista-noticias{
-        display: grid;
-        grid-template-columns: 1fr 4fr 1fr;
+        width: 75%;
     }
     .lista-noticias>div:first-of-type{
-        grid-column-start: 2;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
     }
@@ -799,11 +838,13 @@ h3{
     grid-template-columns: 1fr;
     grid-column-gap: 20px;
 }
-.detalhamento>span{
-    display: block;
-    word-break: break-all;
+.detalhamento{
+    overflow-x: auto;
 }
-.detalhamento>span>span{
+.detalhamento p{
+    margin: 5px 0;
+}
+.detalhamento p span{
     font-weight: bold;
 }
 
@@ -969,7 +1010,6 @@ h3{
 /* Pesquisa ou busca */
 
 .lista-pesquisa{
-    width: 100%;
     margin: auto;
 }
 
@@ -986,12 +1026,32 @@ h3{
 }
 .lista-pesquisa form button{
     font-size: 1rem;
-    font-weight: bold;
-    background: #eeeded;
-    border: 1px solid rgba(0, 0, 0, 0.19);
+    word-wrap: none;
+    text-decoration: none;
+    background: none;
+    border: 2px solid #2a2a2a;
     border-radius: 2px;
+    color: #000;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0;
+}
+
+.lista-pesquisa form button span{
+    display: none;
+    padding: 12px 4px;
+    transition: background 0.2s ease-in-out;
+}
+.lista-pesquisa form button:hover span{
+    background: #2A2A2A;
+    color: #fff;
+}
+.lista-pesquisa form button i{
+    background: #2A2A2A;
+    color: #fff;
     padding: 12px;
 }
+
 .lista-pesquisa .listagem>div{
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -1028,9 +1088,13 @@ h3{
     margin-top: 0;
 }
 
+.paginacao{
+    max-width: 100%;
+    overflow-x: auto;
+}
+
 .paginacao ul{
     display: flex;
-    justify-content: center;
     list-style: none;
     padding-inline-start: 0;
 }
@@ -1066,11 +1130,25 @@ h3{
     color: #fff;
 }
 
+@media (min-width: 576px) {
+    .paginacao ul{
+        justify-content: center;
+    }
+}
+
+@media (min-width: 768px) {
+    .lista-pesquisa form button span{
+        display: initial;
+    }
+}
+
 @media (min-width: 992px) {
     .lista-pesquisa{
         width: 75%;
     }
 }
+
+/* Projetos */
 
 .projeto-membros ul{
     list-style: none;
@@ -1087,4 +1165,77 @@ h3{
 }
 .projeto-membros>ul>li>ul>li:last-of-type::after{
     content: ".";
+}
+
+/* TCC */
+.conteudo-tcc{
+    margin: auto;
+}
+
+@media (min-width: 768px) {
+    .conteudo-tcc{
+        width: 75%;
+    }
+}
+
+@media (min-width: 992px) {
+    .conteudo-tcc{
+        width: 50%;
+    }
+}
+.conteudo-tcc p.autoria{
+    font-size: 1.35rem;
+}
+.conteudo-tcc p.autoria span{
+    font-weight: bold;
+}
+.conteudo-tcc ul.palavras-chave{
+    margin: 0;
+    padding-inline-start: 0;
+    line-height: 2.2rem;
+}
+.conteudo-tcc ul.palavras-chave li{
+    display: inline;
+    list-style: none;
+}
+.palavra-chave{
+    background: #2A2A2A;
+    color: #fff;
+    padding: 5px;
+}
+
+.conteudo-tcc embed{
+    width: 100%;
+    height: 80vh;
+}
+.conteudo-tcc a.btn{
+    display: inline-block;
+    height: 100%;
+    word-wrap: none;
+    text-decoration: none;
+    background: none;
+    border: 2px solid #2a2a2a;
+    border-radius: 2px;
+    color: #000;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 10px 0;
+}
+.conteudo-tcc a.btn span{
+    padding: 10px 4px;
+    transition: background 0.2s ease-in-out;
+}
+.conteudo-tcc a.btn:hover span{
+    background: #2A2A2A;
+    color: #fff;
+    font-weight: 600;
+}
+.conteudo-tcc a.btn i{
+    background: #2A2A2A;
+    color: #fff;
+    padding: 12px;
+}
+.conteudo-tcc ul.referencias li{
+    list-style: none;
+    margin-bottom: 10px;
 }

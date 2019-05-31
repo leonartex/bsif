@@ -15,7 +15,7 @@
 <body>
     <header id="cabecalho">
         <nav>
-            <div>
+            <div id="logo-div">
                 <button id="menu"><i class="fas fa-bars"></i><span class="sr-only">Expandir menu lateral</span></button>
                 <a href="index.html"><img src="img/logo.png"></a>
                 <a href="index.html">BSIF</a>
@@ -25,11 +25,10 @@
                 <li><a href="curso.html">Curso</a></li>
                 <li><a href="noticias.html">Notícias</a></li>
                 <li><a href="projetos.html">Projetos</a></li>
-                <li class="pesquisa">
-                    <form id="pesquisa" action="busca.html" method="GET">
-                        <button type="button" id="pesquisar"><i class="fas fa-search"></i><span class="compacta">
-                                Pesquisar</span></button>
-                        <input type="text" id="campoPesquisa" name="p">
+                <li>
+                    <form id="pesquisa" class="pesquisa" action="busca.html" method="GET">
+                        <button type="button" id="pesquisar"><i class="fas fa-search"></i><span>Pesquisar</span></button>
+                        <input type="text" id="campoPesquisa" name="p" placeholder="Pesquisar...">
                     </form>
                 </li>
             </ul>
