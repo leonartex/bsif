@@ -653,6 +653,7 @@ h3{
 
 #conteudo figure figcaption{
     font-size: 0.90rem;
+    margin: 0;
     padding: 10px;
     background: #2A2A2A;
     color: #FAFAFA;

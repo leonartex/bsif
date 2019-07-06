@@ -12,16 +12,19 @@ Ajeitar para :active, :focus e por aí vai
 Página de corpo docente ???
 Responsividade da listagem de notícias
 Paginação responsiva
+    Botão de anterior e seguinte ficarem sempre a mostra
 Cada tipo de projeto ter uma cor representando ele (afeta .apresentação e o card na área de projetos e página inicial) //Só faz sentido se o resto do site utilizar cores também
 Ver outras informações pertinentes sobre os proejtos
 Encontrar formas mais pertinentes para apresentar os autores dos projetos
 Página de TCCCCCCCCC
     Navegação dos TCCs publicados e o TCC em si
-
 Comentário
     Comentário
         Resposta
     Formulário de comentário
 
+No wordpress
+    Fazer página de projetos, usando função para pegar as categoria filhas de Projetos
+    Fazer o mesmo para TCC
 
 Aplicar boa semantica no HTML
