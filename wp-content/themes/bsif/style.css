@@ -1096,27 +1096,35 @@ h3{
     margin-top: 0;
 }
 
-.paginacao{
+.pagination{
     max-width: 100%;
     overflow-x: auto;
 }
 
-.paginacao ul{
+.pagination h2{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.pagination>div{
     display: flex;
     list-style: none;
     padding-inline-start: 0;
 }
-.paginacao ul li{
+.pagination .dots{
     margin: 3px;
-}
-.paginacao ul li.espaco{
-    padding: 15px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 15px 20px;
     border: 1px solid rgba(0, 0, 0, 0.19);
     background: #eeeded;
 }
-.paginacao ul li a{
+.pagination a{
+    margin: 3px;
     display: block;
     padding: 15px;
     padding-left: 20px;
@@ -1128,18 +1136,26 @@ h3{
     transition: background 0.2s ease-out;
 }
 
-.paginacao li[aria-current] a{
+.pagination [aria-current]{
+    margin: 3px;
+    display: block;
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.19);
+    text-decoration: none;
+    
     background: #2A2A2A;
     color: #fff;
 }
 
-.paginacao li a:hover{
+.pagination a:hover{
     background: #2A2A2A;
     color: #fff;
 }
 
 @media (min-width: 576px) {
-    .paginacao ul{
+    .pagination div{
         justify-content: center;
     }
 }

@@ -11,12 +11,12 @@
     </div>
     <div id="conteudo" class="lista-noticias">
     <?php
-        $noticias = new WP_Query(array('cat'=> 0));
-        if($noticias->have_posts()){
+        //$noticias = new WP_Query(array('cat'=> 0));
+        if(have_posts()){
     ?>  
         <div>
             <h2 class="sr-only">Notícias em destaque</h2>
-            <?php $noticias->the_post(); ?>
+            <?php the_post(); ?>
             <div class="noticia noticia-destaque">
                 <h3><a href="<?= get_the_permalink() ?>"><?= get_the_title() ?></a></h3>
                 <span class="pequeno"><span class="sr-only">Publicado em:</span> <?= get_the_date('j \d\e F \d\e Y'); ?></span>
@@ -26,8 +26,8 @@
 
             <?php
             for($i = 0; $i <3; $i++){
-                if($noticias->have_posts()){
-                    $noticias->the_post();
+                if(have_posts()){
+                    the_post();
             ?>
             <div class="noticia">
                 <?= get_the_post_thumbnail() ?>
@@ -43,8 +43,8 @@
 
             <div class="listagem">
             <?php
-                while($noticias->have_posts()){
-                    $noticias->the_post();
+                while(have_posts()){
+                    the_post();
             ?>
                 <div>
                     <?= get_the_post_thumbnail() ?>
@@ -55,20 +55,14 @@
                     </div>
                 </div>
             <?php } ?>
-                <nav class="paginacao">
-                    <ul>
-                        <li><a href="#"><i class="fas fa-chevron-left"></i></a></li>
-                        <li aria-current="page"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li class="espaco">...</li>
-                        <li><a href="#">10</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i></a></li>
-                    </ul>
-                </nav>
-                <?php print_r($noticias); ?>
+                <?php 
+                the_posts_pagination(
+                    array( 
+                        'mid_size' => 2, 
+                        'prev_text' => __( '<span class="sr-only">Página anterior</span><i class="fas fa-chevron-left"></i>', 'textdomain' ),
+                        'next_text' => __( '<span class="sr-only">Página seguinte</span><i class="fas fa-chevron-right"></i>', 'textdomain' ), 
+                    ) ); 
+                ?>
             </div>
         </div>
     <?php }else{ ?>

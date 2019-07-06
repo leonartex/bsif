@@ -41,26 +41,30 @@ $total_results = $wp_query->found_posts;
                     ?>
                         <span class="pequeno"><span class="sr-only">Publicado em:</span> <?= get_the_date('j \d\e F \d\e Y', $noticia); ?></span>
                     <?php }else{ ?>
-                        <span class="pequeno"><?= get_the_category()[0]->name ?></span>
+                        <span class="pequeno">
+                        <?php 
+                        $categoria = get_the_category();
+                        if($categoria[0]->parent <> 0){
+                            $pai = get_category($categoria[0]->parent); 
+                            echo $pai->name.'/';
+                        }
+                            echo $categoria[0]->name;
+                        ?>
+                        </span>
                     <?php } ?>
                     </span>
                     <?php the_excerpt(); ?>
                 </div>
             </div>
         <?php endwhile; ?>
-            <nav class="paginacao">
-                <ul>
-                    <li><a href="#"><i class="fas fa-chevron-left"></i></a></li>
-                    <li aria-current="page"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li class="espaco">...</li>
-                    <li><a href="#">10</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i></a></li>
-                </ul>
-            </nav>
+            <?php 
+            the_posts_pagination(
+                array( 
+                    'mid_size' => 2, 
+                    'prev_text' => __( '<span class="sr-only">Página anterior</span><i class="fas fa-chevron-left"></i>', 'textdomain' ),
+                    'next_text' => __( '<span class="sr-only">Página seguinte</span><i class="fas fa-chevron-right"></i>', 'textdomain' ), 
+                ) ); 
+            ?>
         </div>
     <?php
         else : 
