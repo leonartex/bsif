@@ -32,7 +32,7 @@
                 <?= get_the_post_thumbnail($projeto) ?>
                 <h3><a href="<?= get_permalink($projeto) ?>"><?= get_the_title($projeto) ?></a></h3>
                 <div class="projeto-membros">
-                    <?= get_the_excerpt($projeto) ?>
+                    <?= get_block($projeto) ?>
                 </div>
             </div>
             <?php } ?>
@@ -51,7 +51,7 @@
                 <?= get_the_post_thumbnail($projeto) ?>
                 <h3><a href="<?= get_permalink($projeto) ?>"><?= get_the_title($projeto) ?></a></h3>
                 <div class="projeto-membros">
-                    <?= get_the_excerpt($projeto) ?>
+                    <?= get_block($projeto) ?>
                 </div>
             </div>
             <?php } ?>
@@ -70,7 +70,7 @@
                 <?= get_the_post_thumbnail($projeto) ?>
                 <h3><a href="<?= get_permalink($projeto) ?>"><?= get_the_title($projeto) ?></a></h3>
                 <div class="projeto-membros">
-                    <?= get_the_excerpt($projeto) ?>
+                    <?= get_block($projeto) ?>
                 </div>
             </div>
             <?php } ?>

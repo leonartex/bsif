@@ -9,12 +9,13 @@ Template Name: Página do curso
         <h1>Sobre o curso</h1>
         <nav aria-label="breadcrumb">
             <ol>
-                <li><a href="index.html">Início</a></li>
+                <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Início</a></li>
                 <li aria-current="page">Curso</li>
             </ol>
         </nav>
     </div>
-    <div id="conteudo" class="curso">
+    <div id="conteudo" class="conteudo-curso">
+        
     <?php
         $args = array(
             'post_type' => 'detalhamento',
@@ -29,8 +30,6 @@ Template Name: Página do curso
                 echo $curso[0]->post_content;
             ?>
         </div>
-        <div class="corpo-docente">
-            <h2>Corpo docente</h2>
         <?php
             $args = array(
                 'post_type' => 'docente',
@@ -38,21 +37,26 @@ Template Name: Página do curso
                 'posts_per_page' => -1
             );
             $docentes = get_posts($args);
-
-            if($docentes <> null){
-                foreach($docentes as $docente){
-        ?>            
-            <div class="docente">
-                <h3><?= $docente->post_title ?></h3>
-                <span class="pequeno">Principal área de formação</span>
-                <span>Áreas de interesse:</span>
+        ?>
+        <div class="corpo-docente">
+            <h2>Corpo docente</h2>
+            <div class="docentes">
                 <?php
-                    echo ($docente->post_content);
-                ?>
+                    if($docentes <> null){
+                        foreach($docentes as $docente){
+                ?>            
+                <div class="docente">
+                    <h3><?= $docente->post_title ?></h3>
+                    <span class="pequeno">Principal área de formação</span>
+                    <span>Áreas de interesse:</span>
+                    <?php
+                        echo ($docente->post_content);
+                    ?>
+                </div>
+            <?php 
+                    }
+                } ?>
             </div>
-        <?php 
-                }
-            } ?>
         </div>
         <div class="ementario">
             <h2>Grade Curricular</h2>
@@ -65,284 +69,38 @@ Template Name: Página do curso
                 );
             ?>
             <div>
-            <?php 
-                foreach ($categorias as $c) { 
-            ?>
-                <h3><?= $c->cat_name ?></h3>
+                <?php 
+                    foreach ($categorias as $c) { 
+                ?> 
+                <div> 
+                    <h3><?= $c->cat_name ?></h3>
+                    <div class="disciplinas">
+                        <?php
+                            $cadeiras=get_posts(
+                                array(
+                                    'post_type' => 'cadeira',
+                                    'category' => $c->term_id,
+                                    'numberposts' => -1
+                                )
+                            );
+                            foreach ($cadeiras as $cad) {
+                        ?>
+                        <div class="disciplina">
+                            <div>
+                                <span><?=$cad->post_title?></span>
+                            </div>
+                            <div>
+                                <span><span class="sr-only">Carga horária:</span> <?= $cad->post_excerpt ?></span>
+                            </div>
+                        </div>
+                    <?php 
+                        }
+                    ?>
+                    </div>
+                </div>
                 <?php
-                    $cadeiras=get_posts(
-                        array(
-                            'post_type' => 'cadeira',
-                            'category' => $c->term_id 
-                        )
-                    );
-                    foreach ($cadeiras as $cad) {
+                    } 
                 ?>
-                <div class="disciplina">
-                    <div>
-                        <span><?=$cad->post_title?></span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> <?= $cad->post_excerpt ?></span>
-                    </div>
-                </div>
-            <?php 
-                    }
-                } 
-            ?>
-                <h3>1º Semestre</h3>
-                <div class="disciplina">
-                    <div>
-                        <span>FUNDAMENTOS DE SISTEMAS DE INFORMAÇÃO</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>PROGRAMAÇÃO ORIENTADA A OBJETOS AVANÇADA</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>GOVERNANÇA DE TECNOLOGIA DA INFORMAÇÃO</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>FUNDAMENTOS DE COMPLEXIDADE EM ALGORITMOS</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <h3>2º Semestre</h3>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <h3>3º Semestre</h3>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <h3>4º Semestre</h3>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <h3>5º Semestre</h3>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
-                <div class="disciplina">
-                    <div>
-                        <span>Nome da disciplina</span>
-                    </div>
-                    <div>
-                        <span><span class="sr-only">Carga horária:</span> 72h</span>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

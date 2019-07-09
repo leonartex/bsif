@@ -2,12 +2,12 @@
 <html lang="pt-br">
 
 <head>
-    <title><?php if($wp->request == '') echo 'Início'; else wp_title(''); ?> - BSIF</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
     <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+    <link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
     <?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); wp_head(); ?>

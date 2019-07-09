@@ -4,7 +4,7 @@
         <h1>Notícias</h1>
         <nav aria-label="breadcrumb">
             <ol>
-                <li><a href="index.html">Início</a></li>
+                <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Início</a></li>
                 <li aria-current="page">Notícias</li>
             </ol>
         </nav>
@@ -51,7 +51,7 @@
                     <div>
                         <h3><a href="<?= get_the_permalink() ?>"><?= get_the_title() ?></a></h3>
                         <span class="pequeno"><span class="sr-only">Publicado em:</span> <?= get_the_date('j \d\e F \d\e Y'); ?></span>
-                        <p><?= get_the_excerpt() ?></p>
+                        <?php echo get_block(get_the_id()); ?>
                     </div>
                 </div>
             <?php } ?>

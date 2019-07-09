@@ -1,6 +1,10 @@
 <?php
     add_theme_support( 'post-thumbnails' ); 
 
+    function theme_slug_setup() {
+        add_theme_support( 'title-tag' );
+     }
+    add_action( 'after_setup_theme', 'theme_slug_setup' );
 
     //Remover atributo de width e height nas imagens, principalmente nas thumbnails
     function remove_image_size_attributes( $html ) {
@@ -43,3 +47,26 @@
     }
     
     add_filter( 'category_template', 'new_subcategory_hierarchy' );
+
+    //Função para retornar o primeiro bloco da postagem (de minha autoria)
+    function get_block($post, $bloco = null){
+        $post = get_post($post);
+        if ( has_blocks( $post->post_content ) ) {
+            $content = '';
+            $blocks = parse_blocks( $post->post_content );
+            if($bloco != null){
+                $content .= $blocks[$bloco]['innerHTML'];
+            }else{
+                foreach ($blocks as $block){
+                    if($block['blockName'] == 'core/paragraph' or $block['blockName'] == 'core/list' or $block['blockName'] == 'core/quote'){
+                        $content .= $block['innerHTML'];
+                        break;
+                    }
+                }
+            }
+        }
+        if ($content == '') {
+            $content = '<p>Essa publicação está vazia de conteúdo explicitamente textual.</p>';
+        }
+        return $content;
+    }

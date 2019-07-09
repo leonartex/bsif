@@ -467,11 +467,6 @@ h3{
     font-size: 0.85rem;
 }
 
-.destaque-noticias>h2{
-    grid-column-start: 1;
-    grid-column-end: 3;
-}
-
 .destaque-noticias h3{
     font-size: 1.75rem;
     line-height: 2.5rem;
@@ -498,13 +493,10 @@ h3{
 }
 
 .ultimas-noticias{
-    margin-top: 75px;
     margin-bottom: 15px;
     padding-left: 10px;
     border-left: 1px solid rgba(0, 0, 0, 0.19);
-}
-.ultimas-noticias h3{
-    line-height: 1.7rem;
+    overflow-y: auto;
 }
 .ultimas-noticias>ul{
     padding: 0;
@@ -522,19 +514,17 @@ h3{
 }
 
 @media (min-width: 576px) {
-    .destaque-noticias{
-        display: grid;
-        grid-column-gap: 20px;
-    }
 }
 
 @media (min-width: 768px) {
-    #noticias{
+    .home-noticias{
         display: grid;
         width: 100%;
         grid-column-gap: 20px;
     }
     .destaque-noticias{
+        display: grid;
+        grid-column-gap: 20px;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
     }
@@ -544,10 +534,14 @@ h3{
 }
 
 @media (min-width: 992px) {
-    #noticias{
+    .home-noticias{
         display: grid;
         grid-template-columns: 2fr 1fr;
         width: 100%;
+    }
+
+    .ultimas-noticias ul{
+        max-height: 80vh;
     }
 }
 
@@ -569,9 +563,9 @@ h3{
     margin: auto;
     max-width: 100%;
 }
-.projeto h3{
+.projeto h3, .projeto span{
     margin-top: 0;
-    padding: 10px;
+    padding: 5px 10px;
 }
 
 @media (min-width: 576px) {
@@ -841,8 +835,8 @@ h3{
     }
 }
 
-/* Curso */
-.curso{
+/* Página Curso */
+.conteudo-curso{
     display: grid;
     grid-template-columns: 1fr;
     grid-column-gap: 20px;
@@ -857,14 +851,12 @@ h3{
     font-weight: bold;
 }
 
-.corpo-docente{
+.corpo-docente .docentes{
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 10px 10px;
 }
-.corpo-docente>h2{
-    margin-bottom: 0;
-}
+
 .docente{
     background: #fff;
     border: 1px solid rgba(0, 0, 0, 0.19);
@@ -892,28 +884,9 @@ h3{
     margin-right: 5px;
 }
 
-.ementario{
-    grid-column-start: 1;
-    grid-column-end: 2;
+.ementario .disciplinas{
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 20px 30px;
-}
-.ementario>h2{
-    grid-column-start: 1;
-    grid-column-end: 2;
-    margin-bottom: 0;
-}
-
-.ementario>div{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 10px 10px;
-}
-
-.ementario>div>h3{
-    margin-top: 0;
-    font-size: 1.5rem;
 }
 
 .disciplina{
@@ -942,76 +915,40 @@ h3{
         word-break: normal;
     }
 
-    .corpo-docente{
+    .corpo-docente .docentes{
         grid-template-columns: 1fr 1fr;
-    }
-    .corpo-docente>h2{
-        grid-column-start: 1;
-        grid-column-end: 3;
     }
 }
 
 @media (min-width: 576px) {
-    .corpo-docente{
+    .corpo-docente .docentes{
         grid-template-columns: 1fr 1fr 1fr;
-    }
-    .corpo-docente>h2{
-        grid-column-start: 1;
-        grid-column-end: 4;
-    }
-
-    .ementario>div{
-        display: grid;
-        grid-template-columns: 1fr;
     }
 }
 
 @media (min-width: 768px) {
-    .corpo-docente{
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }    
-    .corpo-docente>h2{
-        grid-column-start: 1;
-        grid-column-end: 5;
-    }
-
-    .ementario>div{
-        display: grid;
+    .ementario .disciplinas{
         grid-template-columns: 1fr 1fr;
-    }
-    .ementario>div>h3{
-        grid-column-start: 1;
-        grid-column-end: 3;
     }
 }
 
 @media (min-width: 992px) {
-    .curso{
+    .conteudo-curso{
         grid-template-columns: 1fr 1fr;
     }
 
-    .corpo-docente{
+    .corpo-docente .docentes{
         grid-gap: 20px 20px;
         grid-template-columns: 1fr 1fr;
-    }
-    .corpo-docente>h2{
-        grid-column-start: 1;
-        grid-column-end: 3;
     }
 
     .ementario{
         grid-column-start: 1;
         grid-column-end: 3;
-        grid-template-columns: 1fr;
     }
 
-    .ementario>div{
-        display: grid;
+    .ementario .disciplinas{
         grid-template-columns: 1fr 1fr 1fr;
-    }
-    .ementario>div>h3{
-        grid-column-start: 1;
-        grid-column-end: 4;
     }
 }
 
@@ -1263,4 +1200,113 @@ h3{
     list-style: none;
     margin-bottom: 10px;
 }
+
+
+/* Categoria TCC */
+.tcc-anos, .tcc-ano{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+}
+
+@media (min-width: 992px) {
+    .tcc-anos, .tcc-ano{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.tcc{
+    border: 1px solid rgba(0, 0, 0, 0.19);
+    margin: 10px 0;
+}
+.tcc h3, .tcc h2{
+    color: #fff;
+    background: #2a2a2a;
+    padding: 15px;
+    margin: 0;
+    font-size: 1.17em;
+}
+.tcc a{
+    color: #fff!important;
+    background: #2a2a2a!important;
+    transition: all 0.3s!important;
+}
+.tcc a:hover{
+    color: #000!important;
+    background: #FAFAFA!important;
+}
+.tcc .descricao{
+    background: #fff;
+    padding: 15px;
+    margin: 0;
+}
+.tcc .descricao ul{
+    padding-inline-start: 0;
+    margin: 0;
+    list-style: none;
+}
+.tcc .descricao ul li{
+    font-size: 1.08rem;
+    margin-bottom: 10px;
+}
+.tcc p{
+    margin: 5px 0;
+}
+
+/* Post */
+.post-tcc ul:first-of-type{
+    font-size: 1.35rem;
+    list-style: none;
+    padding-inline-start: 0;
+}
+.post-tcc ul:first-of-type li{
+    margin: 1rem 0;
+}
+.post-tcc ul:nth-of-type(2){
+    margin: 0;
+    padding-inline-start: 0;
+    line-height: 2.2rem;
+}
+.post-tcc ul:nth-of-type(2) li{
+    display: inline;
+    list-style: none;
+    background: #2A2A2A;
+    color: #fff;
+    padding: 5px;
+    margin-right: 5px;
+}
+.post-tcc ul:nth-of-type(3) li{
+    list-style: none;
+    margin-bottom: 10px;
+}
+.post-tcc embed{
+    width: 100%;
+    height: 80vh;
+}
+.post-tcc a.btn{
+    display: inline-block;
+    height: 100%;
+    word-wrap: none;
+    text-decoration: none;
+    background: none;
+    border: 2px solid #2a2a2a;
+    border-radius: 2px;
+    color: #000;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 10px 0;
+}
+.post-tcc a.btn span{
+    padding: 10px 4px;
+    transition: background 0.2s ease-in-out;
+}
+.post-tcc a.btn:hover span{
+    background: #2A2A2A;
+    color: #fff;
+    font-weight: 600;
+}
+.post-tcc a.btn i{
+    background: #2A2A2A;
+    color: #fff;
+    padding: 12px;
 }

@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Página de busca
+Template Name: Search Page
 */
 ?>
 <?php
@@ -12,14 +12,14 @@ $total_results = $wp_query->found_posts;
     <h1>Busca</h1>
     <nav aria-label="breadcrumb">
         <ol>
-            <li><a href="index.html">Início</a></li>
+            <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Início</a></li>
             <li aria-current="page">Busca</li>
         </ol>
     </nav>
 </div>
 <div id="conteudo" class="lista-pesquisa">
     <div>
-        <form method="GET" action="<?= get_site_url() ?>">
+        <form method="GET" action="<?php echo esc_url( home_url( '/' ) ); ?>">
             <input type="text" name="s" placeholder="Pesquisar...">
             <button type="submit"><i class="fas fa-search"></i><span class="compacta">
                     Pesquisar</span></button>
@@ -53,7 +53,7 @@ $total_results = $wp_query->found_posts;
                         </span>
                     <?php } ?>
                     </span>
-                    <?php the_excerpt(); ?>
+                    <?php echo get_block(get_the_id()); ?>
                 </div>
             </div>
         <?php endwhile; ?>
