@@ -66,21 +66,25 @@
             ?>
                 <h2><a href="<?= get_site_url() ?>/projetos/">Projetos</a></h2>
             <?php
-            if($projetos <> null){
-                foreach($projetos as $projeto){
-            ?>
-                <article class="projeto">
-                    <?= get_the_post_thumbnail($projeto) ?>
-                    <h3><a href="<?= get_permalink($projeto->ID); ?>"><?= $projeto->post_title; ?></a></h3>
-                    <span class="pequeno"><?= get_the_category($projeto->ID)[0]->name ?></span>
-                </article>
-            <?php 
-                }
-            }else{ 
+                if($projetos <> null){
             ?>
                 <div>
-                    <h3>Perdão, mas ainda não foram registrados projetos no site!</h3>
+                <?php
+                    foreach($projetos as $projeto){
+                ?>
+                    <article class="projeto">
+                        <?= get_the_post_thumbnail($projeto) ?>
+                        <h3><a href="<?= get_permalink($projeto->ID); ?>"><?= $projeto->post_title; ?></a></h3>
+                        <span class="pequeno"><?= get_the_category($projeto->ID)[0]->name ?></span>
+                    </article>
+                <?php 
+                    }
+                ?>
                 </div>
+            <?php
+                }else{ 
+            ?>
+                <p>Perdão, mas ainda não foram registrados projetos no site!</p>
             <?php } ?>
             </div>
         </div>

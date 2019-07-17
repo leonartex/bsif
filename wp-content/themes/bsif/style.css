@@ -274,7 +274,6 @@ header>nav>ul>li[aria-current]>a{
 }
 
 /* Apresentação */
-
 .apresentacao{
     color: #FAFAFA;
     background-color: #2A2A2A;
@@ -401,7 +400,6 @@ footer{
 /* Conteúdo */
 #conteudo{
     padding: 20px;
-    padding-bottom: 40px;
 }
 
 #conteudo>p{
@@ -513,9 +511,6 @@ h3{
     margin-top: 10px;
 }
 
-@media (min-width: 576px) {
-}
-
 @media (min-width: 768px) {
     .home-noticias{
         display: grid;
@@ -543,130 +538,6 @@ h3{
     .ultimas-noticias ul{
         max-height: 80vh;
     }
-}
-
-.projetos{
-    display: grid;
-    width: 100%;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-}
-
-.projeto{
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.19);
-    margin-bottom: 20px;
-}
-
-.projeto img{
-    display: block;
-    margin: auto;
-    max-width: 100%;
-}
-.projeto h3, .projeto span{
-    margin-top: 0;
-    padding: 5px 10px;
-}
-
-@media (min-width: 576px) {
-    .projetos{
-        display: grid;
-        width: 100%;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-        grid-column-gap: 20px;
-    }
-
-    .projetos h2{
-        grid-column-start: 1;
-        grid-column-end: 3;
-    }
-}
-
-@media (min-width: 768px) {
-    .projetos{
-        display: grid;
-        width: 100%;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: auto;
-    }
-
-    .projetos h2{
-        grid-column-start: 1;
-        grid-column-end: 4;
-    }
-}
-
-@media (min-width: 992px) {
-    .projetos{
-        display: grid;
-        width: 100%;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: auto;
-    }
-
-    .projetos h2{
-        grid-column-start: 1;
-        grid-column-end: 5;
-    }
-}
-
-/* Notícia e Projeto*/
-.corpo{
-    display: grid;
-    grid-template-columns: 1fr;
-}
-
-#conteudo p{
-    line-height: 1.6rem;
-}
-
-.corpo>div:first-of-type{
-    grid-column: 2;
-}
-
-@media (min-width: 768px) {
-    .corpo{
-        display: grid;
-        grid-template-columns: 1fr 4fr 1fr;
-    }
-}
-@media (min-width: 992px) {
-    .corpo{
-        display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-    }
-}
-
-.forte{
-    font-weight: bold;
-}
-
-#conteudo figure{
-    width: 100%;
-    margin: 0;
-}
-
-#conteudo figure img{
-    max-width: 100%;
-    display: block;
-    margin: auto;
-}
-
-#conteudo figure figcaption{
-    font-size: 0.90rem;
-    margin: 0;
-    padding: 10px;
-    background: #2A2A2A;
-    color: #FAFAFA;
-}
-#conteudo figure::after{
-    content: " ";
-    width: 40px;
-    height: 4px;
-    background-color: #2A2A2A;
-    display: block;
-    margin-top: 20px;
 }
 
 /* Notícias */
@@ -887,6 +758,7 @@ h3{
 .ementario .disciplinas{
     display: grid;
     grid-template-columns: 1fr;
+    grid-gap: 10px;
 }
 
 .disciplina{
@@ -1109,26 +981,7 @@ h3{
     }
 }
 
-/* Projetos */
-
-.projeto-membros ul{
-    list-style: none;
-    padding-inline-start: 0;
-    padding: 10px;
-}
-.projeto-membros ul li{
-    display: inline;
-}
-.projeto-membros>ul>li>ul>li{
-}
-.projeto-membros>ul>li>ul>li::after{
-    content: ", ";
-}
-.projeto-membros>ul>li>ul>li:last-of-type::after{
-    content: ".";
-}
-
-/* TCC */
+/* TCC e filhas*/
 .conteudo-tcc{
     margin: auto;
 }
@@ -1201,8 +1054,66 @@ h3{
     margin-bottom: 10px;
 }
 
+/* Categoria Projetos e filhas */
+.projetos>div{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+}
 
-/* Categoria TCC */
+.projeto{
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.19);
+    margin-bottom: 20px;
+}
+
+.projeto img{
+    display: block;
+    margin: auto;
+    max-width: 100%;
+}
+.projeto h3, .projeto span, .projeto p{
+    margin-top: 0;
+    padding: 5px 10px;
+}
+
+.projeto-membros ul{
+    list-style: none;
+    margin: 0;
+    padding-inline-start: 0;
+    padding: 10px;
+}
+.projeto-membros ul li{
+    display: inline;
+}
+.projeto-membros>ul>li>ul>li::after{
+    content: ", ";
+}
+.projeto-membros>ul>li>ul>li:last-of-type::after{
+    content: ".";
+}
+
+@media (min-width: 576px) {
+    .projetos>div{
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    .projetos>div{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 992px) {
+    .projetos>div{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+/* Categoria TCC e filhas */
 .tcc-anos, .tcc-ano{
     display: grid;
     grid-template-columns: 1fr;
@@ -1254,6 +1165,48 @@ h3{
 }
 
 /* Post */
+
+#conteudo figure{
+    width: 100%;
+    margin: 0;
+}
+
+#conteudo figure img{
+    max-width: 100%;
+    display: block;
+    margin: auto;
+}
+
+#conteudo figure figcaption{
+    font-size: 0.90rem;
+    margin: 0;
+    padding: 10px;
+    background: #2A2A2A;
+    color: #FAFAFA;
+}
+#conteudo figure::after{
+    content: " ";
+    width: 40px;
+    height: 4px;
+    background-color: #2A2A2A;
+    display: block;
+    margin-top: 20px;
+}
+
+.corpo{
+    margin: auto;
+}
+@media(min-width: 768px){
+    .corpo{
+        width: 75%;
+    }
+}
+@media(min-width: 992px){
+    .corpo{
+        width: 50%;
+    }
+}
+
 .post-tcc ul:first-of-type{
     font-size: 1.35rem;
     list-style: none;

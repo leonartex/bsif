@@ -13,67 +13,61 @@
         </nav>
     </div>
     <div id="conteudo">
+        <?php
+            if(is_category('projetos')){
+        ?>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ultrices ex quam, et
             euismod dolor interdum vestibulum. Integer pellentesque purus ullamcorper aliquet varius. In
             hac habitasse platea dictumst. Donec aliquet, mauris et pretium dictum, elit erat porta magna, vel
             fermentum libero tellus et ligula. Phasellus lacus sapien, viverra non vehicula a, rutrum sed odio.
             Fusce gravida sed dolor eu porttitor. In eget lobortis lacus, vel lobortis ipsum. Morbi commodo nunc
-            non nisi tempus sodales.</p>        
-        <?php
-            if(is_category('extensao') || is_category('projetos')){
-        ?>
-        <div class="projetos">
-            <h2>Projetos de extensão</h2>
-            <?php 
-                $projetos = get_posts(array('numberposts' => -1,'category' => 11));
-                foreach($projetos as $projeto){
+            non nisi tempus sodales.</p> 
+            <?php
+                $categorias = get_categories(
+                    array( 'parent' => 3 )
+                );
+                foreach($categorias as $categoria){
             ?>
-            <div class="projeto">
-                <?= get_the_post_thumbnail($projeto) ?>
-                <h3><a href="<?= get_permalink($projeto) ?>"><?= get_the_title($projeto) ?></a></h3>
-                <div class="projeto-membros">
-                    <?= get_block($projeto) ?>
+        <div class="projetos">
+            <h2>Projetos de <?= lcfirst($categoria->name) ?></h2>
+            <div>
+                <?php
+                    $projetos = get_posts(array('numberposts' => 8,'category' => $categoria->cat_ID, 'orderby' => 'name'));
+                    foreach($projetos as $projeto){
+                ?>
+                <div class="projeto">
+                    <?= get_the_post_thumbnail($projeto) ?>
+                    <h3><a href="<?= get_permalink($projeto) ?>"><?= get_the_title($projeto) ?></a></h3>
+                    <div class="projeto-membros">
+                        <?= get_block($projeto) ?>
+                    </div>
                 </div>
+                <?php } ?>
             </div>
-            <?php } ?>
+            <span><?= $categoria->count ?> projeto(s) de <?= lcfirst($categoria->name) ?></span>
         </div>
-        <?php } ?>
         <?php
-            if(is_category('ensino') || is_category('projetos')){
+                }
+            }
+        ?>
+        <?php
+            if(!is_category('projetos')){
         ?>
         <div class="projetos">
-            <h2>Projetos de ensino</h2>
-            <?php 
-                $projetos = get_posts(array('numberposts' => -1, 'category' => 10));
-                foreach($projetos as $projeto){
-            ?>
-            <div class="projeto">
-                <?= get_the_post_thumbnail($projeto) ?>
-                <h3><a href="<?= get_permalink($projeto) ?>"><?= get_the_title($projeto) ?></a></h3>
-                <div class="projeto-membros">
-                    <?= get_block($projeto) ?>
+            <div>
+                <?php
+                    $projetos = get_posts(array('numberposts' => -1,'category' => get_the_category()[0]->cat_ID));
+                    foreach($projetos as $projeto){
+                ?>
+                <div class="projeto">
+                    <?= get_the_post_thumbnail($projeto) ?>
+                    <h3><a href="<?= get_permalink($projeto) ?>"><?= get_the_title($projeto) ?></a></h3>
+                    <div class="projeto-membros">
+                        <?= get_block($projeto) ?>
+                    </div>
                 </div>
+                <?php } ?>
             </div>
-            <?php } ?>
-        </div>
-        <?php } ?>
-        <?php
-            if(is_category('pesquisa') || is_category('projetos')){
-        ?>
-        <div class="projetos">
-            <h2>Projetos de pesquisa</h2>
-            <?php 
-                $projetos = get_posts(array('numberposts' => -1, 'category' => 9));
-                foreach($projetos as $projeto){
-            ?>
-            <div class="projeto">
-                <?= get_the_post_thumbnail($projeto) ?>
-                <h3><a href="<?= get_permalink($projeto) ?>"><?= get_the_title($projeto) ?></a></h3>
-                <div class="projeto-membros">
-                    <?= get_block($projeto) ?>
-                </div>
-            </div>
-            <?php } ?>
         </div>
         <?php } ?>
     </div>
