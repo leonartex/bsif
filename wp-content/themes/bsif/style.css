@@ -2,8 +2,8 @@
 /*
 Theme Name: BSIF
 Author: Leonardo Garcez Dalenogari Alba
-Description: Tema para ser utilizado apenas no site do Bacharelado de Sistemas de Informação IFFar - Câmpus São Borja
-Version: 0.9
+Description: Tema para ser utilizado no site do Bacharelado de Sistemas de Informação IFFar - Câmpus São Borja
+Version: 1.0
 */
 
 .sr-only {
@@ -511,6 +511,21 @@ h3{
     margin-top: 10px;
 }
 
+.turmas{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+}
+.turmas .tcc{
+    margin: 0;
+}
+
+@media (min-width: 576px) {
+    .turmas{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 @media (min-width: 768px) {
     .home-noticias{
         display: grid;
@@ -526,6 +541,10 @@ h3{
     .ultimas-noticias{
         padding-left: 20px;
     }
+
+    .turmas{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
 }
 
 @media (min-width: 992px) {
@@ -537,6 +556,10 @@ h3{
 
     .ultimas-noticias ul{
         max-height: 80vh;
+    }
+
+    .turmas{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
 
@@ -611,10 +634,6 @@ h3{
     height: 100%;
 }
 
-.lista-noticias .noticia:nth-of-type(4){
-    display: none;
-}
-
 @media (min-width: 576px) {
     .lista-noticias>div:first-of-type{
         display: grid;
@@ -639,6 +658,11 @@ h3{
     }
     .lista-noticias .noticia-destaque>img{
         width: 100%;
+    }
+
+    .lista-noticias .noticia:nth-of-type(4){
+        grid-column-start: 1;
+        grid-column-end: 3;
     }
 }
 
@@ -671,7 +695,8 @@ h3{
     }
 
     .lista-noticias .noticia:nth-of-type(4){
-        display: block;
+        grid-column-start: auto;
+        grid-column-end: auto;
     }
 }
 
@@ -763,6 +788,18 @@ h3{
 
 .disciplina{
     display: flex;
+}
+.disciplina a{
+    color: #fff;
+    transition: all 0.3s;
+    text-decoration: none;
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+.disciplina a:hover{
+    color: #000;
+    background: #fafafa;
+    transition: all 0.3s;
 }
 .disciplina>div:first-of-type{
     flex-grow: 1;
@@ -1084,15 +1121,6 @@ h3{
     padding-inline-start: 0;
     padding: 10px;
 }
-.projeto-membros ul li{
-    display: inline;
-}
-.projeto-membros>ul>li>ul>li::after{
-    content: ", ";
-}
-.projeto-membros>ul>li>ul>li:last-of-type::after{
-    content: ".";
-}
 
 @media (min-width: 576px) {
     .projetos>div{
@@ -1207,12 +1235,12 @@ h3{
     }
 }
 
-.post-tcc ul:first-of-type{
+.post-tcc ul:first-of-type, .post-projetos ul:first-of-type{
     font-size: 1.35rem;
     list-style: none;
     padding-inline-start: 0;
 }
-.post-tcc ul:first-of-type li{
+.post-tcc ul:first-of-type li, .post-projetos ul:first-of-type li{
     margin: 1rem 0;
 }
 .post-tcc ul:nth-of-type(2){
@@ -1262,4 +1290,9 @@ h3{
     background: #2A2A2A;
     color: #fff;
     padding: 12px;
+}
+
+.post-ementa ul li{
+    list-style: none;
+    margin-bottom: 10px;
 }

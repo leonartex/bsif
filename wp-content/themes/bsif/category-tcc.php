@@ -50,6 +50,7 @@
                 <?php   
                     }
                 ?>
+                <span><?= $c->count ?> trabalhos(s) apresentados</span>
             </div>
             <?php
                 }

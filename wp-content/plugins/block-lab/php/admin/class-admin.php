@@ -3,7 +3,7 @@
  * WP Admin resources.
  *
  * @package   Block_Lab
- * @copyright Copyright(c) 2018, Block Lab
+ * @copyright Copyright(c) 2019, Block Lab
  * @license   http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  */
 
@@ -31,6 +31,13 @@ class Admin extends Component_Abstract {
 	public $license;
 
 	/**
+	 * User onboarding.
+	 *
+	 * @var Onboarding
+	 */
+	public $onboarding;
+
+	/**
 	 * Plugin upgrade.
 	 *
 	 * @var Upgrade
@@ -54,6 +61,9 @@ class Admin extends Component_Abstract {
 		$this->license = new License();
 		block_lab()->register_component( $this->license );
 
+		$this->onboarding = new Onboarding();
+		block_lab()->register_component( $this->onboarding );
+
 		$show_pro_nag = apply_filters( 'block_lab_show_pro_nag', true );
 		if ( $show_pro_nag && ! block_lab()->is_pro() ) {
 			$this->upgrade = new Upgrade();
@@ -62,11 +72,9 @@ class Admin extends Component_Abstract {
 			$this->maybe_settings_redirect();
 		}
 
-		if ( block_lab()->is_pro() ) {
-			if ( defined( 'WP_LOAD_IMPORTERS' ) && WP_LOAD_IMPORTERS ) {
-				$this->import = new Import();
-				block_lab()->register_component( $this->import );
-			}
+		if ( defined( 'WP_LOAD_IMPORTERS' ) && WP_LOAD_IMPORTERS ) {
+			$this->import = new Import();
+			block_lab()->register_component( $this->import );
 		}
 	}
 

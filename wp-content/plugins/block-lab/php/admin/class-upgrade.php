@@ -3,7 +3,7 @@
  * Block Lab Upgrade Page.
  *
  * @package   Block_Lab
- * @copyright Copyright(c) 2018, Block Lab
+ * @copyright Copyright(c) 2019, Block Lab
  * @license   http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  */
 
@@ -22,12 +22,6 @@ class Upgrade extends Component_Abstract {
 	 * @var string
 	 */
 	public $slug = 'block-lab-pro';
-
-	/**
-	 * Initialise the Upgrade component.
-	 */
-	public function init() {
-	}
 
 	/**
 	 * Register any hooks that this component needs.

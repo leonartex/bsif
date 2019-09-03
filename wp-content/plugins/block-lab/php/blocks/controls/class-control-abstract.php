@@ -3,7 +3,7 @@
  * Control abstract.
  *
  * @package   Block_Lab
- * @copyright Copyright(c) 2018, Block Lab
+ * @copyright Copyright(c) 2019, Block Lab
  * @license http://opensource.org/licenses/GPL-2.0 GNU General Public License, version 2 (GPL-2.0)
  */
 
@@ -136,6 +136,11 @@ abstract class Control_Abstract {
 	 */
 	public function render_settings( $field, $uid ) {
 		foreach ( $this->settings as $setting ) {
+			// Don't render the location setting for sub-fields.
+			if ( 'location' === $setting->type && isset( $field->settings['parent'] ) ) {
+				continue;
+			}
+
 			if ( isset( $field->settings[ $setting->name ] ) ) {
 				$setting->value = $field->settings[ $setting->name ];
 			} else {
@@ -143,8 +148,10 @@ abstract class Control_Abstract {
 			}
 
 			$classes = array(
-				'block-fields-edit-settings-' . $this->name . '-' . $setting->name,
-				'block-fields-edit-settings-' . $this->name,
+				"block-fields-edit-settings-{$this->name}-{$setting->name}",
+				"block-fields-edit-{$setting->name}-settings",
+				"block-fields-edit-settings-{$this->name}",
+				"block-fields-edit-{$setting->name}-settings",
 				'block-fields-edit-settings',
 			);
 			$name    = 'block-fields-settings[' . $uid . '][' . $setting->name . ']';

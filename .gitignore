@@ -30,7 +30,7 @@ node_modules/
 # End of https://www.gitignore.io/api/wordpress
 
 .htaccess
-index.php
+./index.php
 license.txt
 wp-includes
 wp-admin

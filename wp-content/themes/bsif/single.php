@@ -31,6 +31,7 @@
                 <?php if($categoria[0]->name == 'Notícias'){?>
                 <span class="sr-only">Publição:</span> <span class="forte"><?php the_time('j \d\e F \d\e Y') ?></span>,
                 <?php } ?>
+                
                 <?php the_content(); ?>
             </div>
         </div>

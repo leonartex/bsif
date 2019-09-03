@@ -27,6 +27,7 @@
                 <li <?php if($wp->request == 'curso') echo 'aria-current="page"' ?>><a href="<?= get_site_url() ?>/curso/">Curso</a></li>
                 <li <?php if(substr( $wp->request.'/', 0, 9 ) == 'noticias/') echo 'aria-current="location"' ?>><a href="<?= get_site_url() ?>/noticias/">Notícias</a></li>
                 <li <?php if(substr( $wp->request.'/', 0, 9 ) == 'projetos/') echo 'aria-current="location"' ?>><a href="<?= get_site_url() ?>/projetos/">Projetos</a></li>
+                <li <?php if(substr( $wp->request.'/', 0, 4 ) == 'tcc/') echo 'aria-current="location"' ?>><a href="<?= get_site_url() ?>/tcc/">TCC</a></li>
                 <li>
                     <form id="pesquisa" class="pesquisa" action="<?= get_site_url() ?>" method="GET">
                         <button type="button" id="pesquisar"><i class="fas fa-search"></i><span>Pesquisar</span></button>
@@ -43,6 +44,7 @@
                 <li <?php if($wp->request == 'curso') echo 'aria-current="page"' ?>><a href="<?= get_site_url() ?>/curso/">Curso</a></li>
                 <li <?php if(substr( $wp->request.'/', 0, 9 ) == 'noticias/') echo 'aria-current="location"' ?>><a href="<?= get_site_url() ?>/noticias/">Notícias</a></li>
                 <li <?php if(substr( $wp->request.'/', 0, 9 ) == 'projetos/') echo 'aria-current="location"' ?>><a href="<?= get_site_url() ?>/projetos/">Projetos</a></li>
+                <li <?php if(substr( $wp->request.'/', 0, 4 ) == 'tcc/') echo 'aria-current="location"' ?>><a href="<?= get_site_url() ?>/tcc/">TCC</a></li>
             </ul>
         </nav>
     </aside>

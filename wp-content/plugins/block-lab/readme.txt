@@ -5,7 +5,7 @@ Tags: Gutenberg, Blocks
 Requires at least: 5.0
 Tested up to: 5.2
 Requires PHP: 5.6
-Stable tag: 1.3.3
+Stable tag: 1.3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl
 
@@ -38,7 +38,7 @@ Block Lab Pro is coming mid 2019 with power features to take your block building
 == Links ==
 * [WordPress.org](https://wordpress.org/plugins/block-lab)
 * [Github](https://github.com/getblocklab/block-lab)
-* [Documentation](https://github.com/getblocklab/block-lab/wiki)
+* [Documentation](https://getblocklab.com/docs)
 * [Support](https://wordpress.org/support/plugin/block-lab)
 * [Block Lab Pro](https://getblocklab.com/block-lab-pro)
 
@@ -64,13 +64,38 @@ A: Although the plugin handles the majority of the work in building a custom blo
 A: This plugin is open source and can only be better through community contribution. The GitHub repo is [here](https://github.com/getblocklab/block-lab).
 
 **Q: Where can I find documentation for this plugin?**
-A: [Here](https://github.com/getblocklab/block-lab/wiki)
+A: [Here](https://getblocklab.com/docs/)
 
 == Contributing ==
 
 See [Contributing to Block Lab](https://github.com/getblocklab/block-lab/blob/develop/CONTRIBUTING.md).
 
 == Changelog ===
+
+= 1.3.6 – 2019-08-22 =
+
+* New: 🔁 REPEATER FIELD 🔁
+* New: Conditional Blocks, based on Post Type
+* Tweaks: Just about everything! We did a lot of refactoring in this release to make things silky smooth and über-maintainable.
+
+= 1.3.5 – 2019-08-18 =
+
+* New: Block Lab will now enqueue a global stylesheet, so you can keep your common block styles in one place. [Read more](https://github.com/getblocklab/block-lab/pull/371)
+* New: Block templates can now be placed inside a sub-folder, for an even cleaner directory structure. [Read more](https://github.com/getblocklab/block-lab/pull/372)
+* Tweak: Use a textarea for specifying the default value of a textarea control.
+* Tweak: Better handling of deprecated functions.
+* Tweak: Rewrite of various functions, making developer access to common commands much simpler.
+* Fix: Child theme templates are now correctly loaded before their parent templates.
+* Fix: Autoslugs now continue to work properly after the title field loses focus.
+
+= 1.3.4 - 2019-07-22 =
+
+* New: Block Lab grew to level 1.3.4. Block Lab learned **Custom Categories**.
+* Tweak: **@phpbits** used Pull Request. All right! The **`block_lab_get_block_attributes`** filter was caught!
+* Tweak: **Template Loader** used Harden. **Template Loader**'s defense rose!
+* Tweak: Booted up a TM! It contained **Unit Tests**!
+* Fix: Wild **Missing Filter in Inspector Controls** bug appeared! Go! Bugfix!
+* Fix: Enemy **Mixed Up Inspector Controls** fainted! @kienstra gained 0902a06 EXP. Points!
 
 = 1.3.3 - 2019-06-21 =
 
@@ -91,7 +116,7 @@ See [Contributing to Block Lab](https://github.com/getblocklab/block-lab/blob/de
 
 = 1.3.1 - 2019-05-22 =
 
-* New: Support for Gutenberg's built-in Additional CSS Class in your block template, by using the field `className`. [Read more](https://github.com/getblocklab/block-lab/wiki/7.-FAQ)
+* New: Support for Gutenberg's built-in Additional CSS Class in your block template, by using the field `className`. [Read more](https://getblocklab.com/docs/faqs/)
 * New: The Textarea field now has an option to automatically add paragraph tags and line-breaks
 * Fix: Bug affecting blocks containing Pro fields when there's no active Pro license
 
@@ -123,7 +148,7 @@ If you are using the `block_value()` function with an image field and externally
 
 = 1.2.1 - 2019-03-21 =
 
-* New: Automatic stylesheet enqueuing. Now you can create custom stylesheets for individual blocks! [Read more here](https://github.com/getblocklab/block-lab/wiki/5.-Styling-Custom-Blocks).
+* New: Automatic stylesheet enqueuing. Now you can create custom stylesheets for individual blocks! [Read more here](https://getblocklab.com/docs/get-started/style-block-lab-custom-blocks/).
 * New: A User control type (for Block Lab Pro users)
 * Fix: Various multiselect bug fixes, allowing for empty values in the multiselect control
 

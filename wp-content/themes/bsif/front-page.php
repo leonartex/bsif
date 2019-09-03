@@ -87,6 +87,34 @@
                 <p>Perdão, mas ainda não foram registrados projetos no site!</p>
             <?php } ?>
             </div>
+
+            <div>
+                <?php
+                    $turmas = get_categories(
+                        array(
+                            'order' => 'DESC',
+                            'parent'  => 7
+                        )
+                    );
+                ?>
+                <h2><a href="<?= get_site_url() ?>/tcc/">Trabalhos de Conclusão de Curso</a></h2>
+                <div class="turmas">
+                <?php
+                if($turmas <> null){
+                    foreach($turmas as $turma){
+                ?>  <div>
+                    <div class="tcc">
+                        <h3><a href="<?= get_category_link($turma)?>"><?=$turma->name?></a></h3>
+                    </div>
+                    </div>
+                <?php 
+                    }
+                }else{
+                    echo "Ainda não foram cadastrados TCCs no sistema";
+                }
+                ?>
+                </div>
+            </div>
         </div>
     </main>
 <?php get_footer(); ?>

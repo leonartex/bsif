@@ -1,9 +1,9 @@
 === Remove Category URL ===
-Contributors: valeriosza
+Contributors: valeriosza, studiopioneer
 Tags: categories, category base, category, permalinks, URL structure, links, seo, cms, wpml, URL
 Requires at least: 3.1
 Tested up to: 5.2.2
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv2
 Donate link: 
 

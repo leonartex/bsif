@@ -87,7 +87,7 @@ Template Name: Página do curso
                         ?>
                         <div class="disciplina">
                             <div>
-                                <span><?=$cad->post_title?></span>
+                                <a href="<?= $cad->guid ?>"><span><?=$cad->post_title?></span></a>
                             </div>
                             <div>
                                 <span><span class="sr-only">Carga horária:</span> <?= $cad->post_excerpt ?></span>

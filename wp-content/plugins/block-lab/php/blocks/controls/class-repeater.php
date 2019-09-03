@@ -1,6 +1,6 @@
 <?php
 /**
- * Radio control.
+ * Repeater control.
  *
  * @package   Block_Lab
  * @copyright Copyright(c) 2019, Block Lab
@@ -10,32 +10,33 @@
 namespace Block_Lab\Blocks\Controls;
 
 /**
- * Class Checkbox
+ * Class Repeater
  */
-class Checkbox extends Control_Abstract {
+class Repeater extends Control_Abstract {
 
 	/**
 	 * Control name.
 	 *
 	 * @var string
 	 */
-	public $name = 'checkbox';
+	public $name = 'repeater';
 
 	/**
 	 * Field variable type.
 	 *
+	 * The Repeater control is an array of objects, with each row being an object.
+	 * For example, a repeater with one row might be [ { 'example-text': 'Foo', 'example-image': 4232 } ].
+	 *
 	 * @var string
 	 */
-	public $type = 'boolean';
+	public $type = 'object';
 
 	/**
-	 * Checkbox constructor.
-	 *
-	 * @return void
+	 * Repeater constructor.
 	 */
 	public function __construct() {
 		parent::__construct();
-		$this->label = __( 'Checkbox', 'block-lab' );
+		$this->label = __( 'Repeater', 'block-lab' );
 	}
 
 	/**
@@ -44,16 +45,6 @@ class Checkbox extends Control_Abstract {
 	 * @return void
 	 */
 	public function register_settings() {
-		$this->settings[] = new Control_Setting( $this->settings_config['location'] );
 		$this->settings[] = new Control_Setting( $this->settings_config['help'] );
-		$this->settings[] = new Control_Setting(
-			array(
-				'name'     => 'default',
-				'label'    => __( 'Default Value', 'block-lab' ),
-				'type'     => 'checkbox',
-				'default'  => '0',
-				'sanitize' => array( $this, 'sanitize_checkbox' ),
-			)
-		);
 	}
 }
